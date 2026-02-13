@@ -7,48 +7,85 @@ const { nameButton } = Astro.props;
 ---
 
 <button class="consultation-button" onclick="window.openPopupForm()">
-  {nameButton}
+  <span class="consultation-button__text">{nameButton}</span>
+  <span class="consultation-button__arrow" aria-hidden="true">→</span>
 </button>
 
 <style is:global>
   .consultation-button {
-    background-color: #8becd1;
-    color: white;
-    padding: 12px 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary-light) 100%);
+    color: var(--color-white);
+    padding: 14px 32px;
     border: none;
-    border-radius: 5px;
-    font-size: 1.4em;
+    border-radius: var(--radius-xl);
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: var(--font-body);
     text-transform: uppercase;
+    letter-spacing: 0.06em;
     cursor: pointer;
     position: relative;
-    animation: pulse 1.5s infinite;
-    font-family: Arial, Helvetica, sans-serif;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(78, 203, 163, 0.45);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .consultation-button::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .consultation-button:hover::before {
+    opacity: 1;
   }
 
   .consultation-button:hover {
     animation-play-state: paused;
-    color: black;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px rgba(78, 203, 163, 0.55);
+  }
+
+  .consultation-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(78, 203, 163, 0.35);
+  }
+
+  .consultation-button__text,
+  .consultation-button__arrow {
+    position: relative;
+    z-index: 1;
+  }
+
+  .consultation-button__arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .consultation-button:hover .consultation-button__arrow {
+    transform: translateX(4px);
   }
 
   @keyframes pulse {
-    0% {
-      transform: scale(1);
-      box-shadow: 0 0 5px rgba(139, 236, 209, 0.8);
+    0%, 100% {
+      box-shadow: 0 4px 20px rgba(78, 203, 163, 0.45);
     }
     50% {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px rgba(139, 236, 209, 1);
-    }
-    100% {
-      transform: scale(1);
-      box-shadow: 0 0 5px rgba(139, 236, 209, 0.8);
+      box-shadow: 0 6px 28px rgba(78, 203, 163, 0.7), 0 0 0 6px rgba(78, 203, 163, 0.12);
     }
   }
 
   @media (max-width: 500px) {
     .consultation-button {
-      padding: 8px 16px;
-      font-size: 1em;
+      padding: 12px 24px;
+      font-size: 0.85rem;
     }
   }
 </style>
