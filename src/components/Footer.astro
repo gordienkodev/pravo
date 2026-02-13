@@ -1,0 +1,248 @@
+---
+---
+
+<footer class="footer">
+  <div class="footer-contact-form-container">
+    <div class="footer-address-block">
+      Санкт-Петербург, Просвещения пр. 43
+    </div>
+    <div class="footer-phone-block">
+      <a class="footer-phone-link" href="tel:+79315909970">
+        +7 (931) 590 99 70
+      </a>
+    </div>
+    <div>
+      <button class="privacy-policy" id="privacy-policy-btn">
+        Политика конфиденциальности
+      </button>
+    </div>
+  </div>
+</footer>
+
+<!-- Модалка политики конфиденциальности -->
+<div class="modal-overlay" id="privacy-modal" style="display:none;">
+  <div class="modal-content" id="privacy-modal-inner">
+    <div class="modal-header">
+      <h3 class="modal-title">Политика конфиденциальности</h3>
+      <button class="modal-close" id="privacy-modal-close">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div>
+        Любая информация, представленная на данном сайте, носит исключительно
+        информационный характер и ни при каких условиях не является публичной
+        офертой, определяемой положениями статьи 437 ГК РФ. Отправляя сведения через
+        любую электронную форму на этом сайте, вы даете согласие на обработку ваших
+        персональных данных.
+        <h3>Соглашение на обработку персональных данных.</h3>
+        Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных
+        данных» от 27.07.2006 года Вы подтверждаете свое согласие на обработку
+        сайтом zhilischnoe-pravo.ru персональных данных: сбор, систематизацию,
+        накопление, хранение, уточнение (обновление, изменение), использование,
+        передачу исключительно в целях продажи программного обеспечения на Ваше имя,
+        как это описано ниже, блокирование, обезличивание, уничтожение. Сайт
+        zhilischnoe-pravo.ru гарантирует конфиденциальность получаемой информации.
+        Обработка персональных данных осуществляется в целях эффективного исполнения
+        заказов, договоров и иных обязательств, принятых сайтом zhilischnoe-pravo.ru
+        в качестве обязательных к исполнению. В случае необходимости предоставления
+        Ваших персональных данных правообладателю, дистрибьютору или реселлеру
+        программного обеспечения в целях регистрации программного обеспечения на
+        ваше имя, вы даёте согласие на передачу ваших персональных данных. Сайт
+        zhilischnoe-pravo.ru гарантирует, что правообладатель, дистрибьютор или
+        реселлер программного обеспечения осуществляет защиту персональных данных на
+        условиях, аналогичных изложенным в Политике конфиденциальности персональных
+        данных. Настоящее согласие распространяется на следующие Ваши персональные
+        данные: фамилия, имя и отчество, адрес электронной почты, почтовый адрес
+        доставки заказов, контактный телефон, платёжные реквизиты. Срок действия
+        согласия является неограниченным. Вы можете в любой момент отозвать
+        настоящее согласие, направив письменное уведомление на адрес:
+        admin@zhilischnoe-pravo.ru с пометкой «Отзыв согласия на обработку
+        персональных данных». Обращаем ваше внимание, что отзыв согласия на
+        обработку персональных данных влечёт за собой удаление Вашей учётной записи
+        с Интернет-сайта zhilischnoe-pravo.ru, а также уничтожение записей,
+        содержащих ваши персональные данные, в системах обработки персональных
+        данных на сайте zhilischnoe-pravo.ru, что может сделать невозможным
+        пользование интернет-сервисами zhilischnoe-pravo.ru. Гарантирую, что
+        представленная мной информация является полной, точной и достоверной, а
+        также что при представлении информации не нарушаются действующее
+        законодательство Российской Федерации, законные права и интересы третьих
+        лиц. Вся представленная информация заполнена мною в отношении себя лично.
+        Настоящее согласие действует в течение всего периода хранения персональных
+        данных, если иное не предусмотрено законодательством Российской Федерации.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-ok" id="privacy-modal-ok">OK</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const modal = document.getElementById('privacy-modal') as HTMLElement;
+  const modalInner = document.getElementById('privacy-modal-inner') as HTMLElement;
+  const openBtn = document.getElementById('privacy-policy-btn') as HTMLElement;
+  const closeBtn = document.getElementById('privacy-modal-close') as HTMLElement;
+  const okBtn = document.getElementById('privacy-modal-ok') as HTMLElement;
+
+  function openModal() {
+    modal.style.display = 'flex';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+  okBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (!modalInner.contains(e.target as Node)) {
+      closeModal();
+    }
+  });
+</script>
+
+<style>
+  footer {
+    background-color: #022d21;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  }
+
+  footer a {
+    color: #ffffff;
+    text-decoration: none;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    footer {
+      padding: 10px 0;
+    }
+  }
+
+  .footer-contact-form-container {
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 100px;
+    font-size: 1.3em;
+    margin: 5px;
+    color: #ffffff;
+  }
+
+  .footer-phone-link {
+    color: #ffffff;
+  }
+
+  .privacy-policy {
+    color: #ffffff;
+    font-size: 0.8em;
+    cursor: pointer;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    font-family: Arial, sans-serif;
+  }
+
+  .privacy-policy:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 800px) {
+    .footer-contact-form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+  }
+
+  /* Modal styles */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 800px;
+    max-width: 100%;
+    position: relative;
+    color: #000;
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+
+  .modal-title {
+    margin: 0;
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .modal-body {
+    padding: 10px 0;
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  .modal-footer {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .modal-ok {
+    background-color: #23574d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .modal-ok:hover {
+    background-color: #1a4039;
+  }
+
+  @media (max-width: 700px) {
+    .modal-content {
+      padding: 5px;
+      border-radius: 5px;
+      width: 300px;
+      font-size: 0.7em;
+    }
+  }
+</style>

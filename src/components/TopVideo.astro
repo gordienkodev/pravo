@@ -1,0 +1,71 @@
+---
+const videos = ['video1.mp4', 'video2.mp4'];
+const videoSrc = videos[Math.floor(Math.random() * videos.length)];
+---
+
+<div class="top__content">
+  <div class="top__content-item">
+    <h1 class="top__title">Юрист Рыжков Сергей Анатольевич</h1>
+    <div class="top__text">
+      Если у меня получится решить Вашу проблему по телефону, я не возьму с
+      Вас денег. Консультации по телефону я провожу бесплатно.
+    </div>
+  </div>
+  <video class="top__content-video" loop muted autoplay playsinline>
+    <source src={`https://zhilischnoe-pravo.ru/video/${videoSrc}`} type="video/mp4" />
+  </video>
+</div>
+
+<style>
+  .top__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-radius: 40px;
+    padding: 80px;
+    margin-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+    background-color: rgba(139, 236, 209, 0.1);
+    background: linear-gradient(
+      to right,
+      rgba(139, 236, 209, 1) 10%,
+      rgba(139, 236, 209, 0.1) 60%
+    );
+  }
+
+  .top__content-item {
+    max-width: 430px;
+    text-align: left;
+  }
+
+  .top__content-video {
+    z-index: -1;
+    left: 0;
+    top: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .top__title {
+    font-weight: 600;
+    padding-bottom: 40px;
+  }
+
+  .top__text {
+    font-size: 2em;
+    color: #23574d;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  @media (max-width: 500px) {
+    .top__text {
+      display: none;
+    }
+  }
+</style>

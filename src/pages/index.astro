@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TopVideo from '../components/TopVideo.astro';
+import Services from '../components/Services.astro';
+import Steps from '../components/Steps.astro';
+import Map from '../components/Map.astro';
+import ConsultationButton from '../components/ConsultationButton.astro';
+import PopupForm from '../components/PopupForm.astro';
+---
+
+<Layout>
+  <div class="layout-container">
+    <Header />
+    <main>
+      <div class="home-container">
+        <TopVideo />
+        <Services />
+        <ConsultationButton nameButton="Обратиться" />
+        <Steps />
+        <ConsultationButton nameButton="Бесплатная консультация" />
+        <Map />
+      </div>
+    </main>
+    <Footer />
+  </div>
+
+  <!-- Попап форма (одна на всю страницу) -->
+  <PopupForm />
+</Layout>
+
+<style>
+  .layout-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .home-container {
+    padding: 20px;
+    text-align: center;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding-bottom: 80px; /* отступ от fixed footer */
+  }
+
+  .home-container h1 {
+    font-size: 3em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    color: #23574d;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .home-container p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 500px) {
+    .home-container h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+  }
+</style>

@@ -1,0 +1,23 @@
+---
+---
+
+<div class="map__content" id="map-content"></div>
+
+<script>
+  const script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.charset = 'utf-8';
+  script.async = true;
+  script.src =
+    'https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A1cd84b0032042b859d1605599ba3e6f3afdbe66b57ebf6e354a16a84f7ba484e&width=100%25&height=300&lang=ru_RU&scroll=true';
+  document.getElementById('map-content')!.appendChild(script);
+</script>
+
+<style>
+  .map__content {
+    background-color: #e8fbf6;
+    margin-bottom: 50px;
+    margin-top: 50px;
+    height: 300px;
+  }
+</style>
