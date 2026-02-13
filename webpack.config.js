@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isProduction = process.env.NODE_ENV === 'production';
 const stylesHandler = isProduction ? MiniCssExtractPlugin.loader : 'style-loader';
@@ -28,6 +29,11 @@ const config = {
       filename: '[name].css',
     }),
     new CleanWebpackPlugin({ cleanStaleWebpackAssets: false }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'public/video', to: 'video' }
+      ]
+    }),
   ],
   module: {
     rules: [
@@ -63,6 +69,10 @@ const config = {
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif|ico)$/i,
+        type: 'asset/resource'
+      },
+      {
+        test: /\.(mp4|webm|ogg|ogv|avi|mov)$/i,
         type: 'asset/resource'
       },
       {
