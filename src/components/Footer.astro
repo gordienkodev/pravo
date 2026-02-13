@@ -2,19 +2,31 @@
 ---
 
 <footer class="footer">
-  <div class="footer-contact-form-container">
-    <div class="footer-address-block">
-      Санкт-Петербург, Просвещения пр. 43
+  <div class="footer__top-border"></div>
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__initials">РСА</div>
+      <div class="footer__brand-text">
+        <span class="footer__name">Рыжков Сергей Анатольевич</span>
+        <span class="footer__specialty">Юрист по жилищному праву</span>
+      </div>
     </div>
-    <div class="footer-phone-block">
-      <a class="footer-phone-link" href="tel:+79315909970">
-        +7 (931) 590 99 70
+
+    <div class="footer__contacts">
+      <a class="footer__phone" href="tel:+79315909970">
+        <span class="footer__phone-icon">📞</span>
+        +7 (931) 590-99-70
       </a>
+      <address class="footer__address">
+        Санкт-Петербург, просп. Просвещения, 43
+      </address>
     </div>
-    <div>
-      <button class="privacy-policy" id="privacy-policy-btn">
+
+    <div class="footer__legal">
+      <button class="footer__privacy-btn" id="privacy-policy-btn">
         Политика конфиденциальности
       </button>
+      <span class="footer__copy">© {new Date().getFullYear()} Все права защищены</span>
     </div>
   </div>
 </footer>
@@ -24,54 +36,41 @@
   <div class="modal-content" id="privacy-modal-inner">
     <div class="modal-header">
       <h3 class="modal-title">Политика конфиденциальности</h3>
-      <button class="modal-close" id="privacy-modal-close">&times;</button>
+      <button class="modal-close" id="privacy-modal-close" aria-label="Закрыть">&times;</button>
     </div>
     <div class="modal-body">
-      <div>
+      <p>
         Любая информация, представленная на данном сайте, носит исключительно
         информационный характер и ни при каких условиях не является публичной
         офертой, определяемой положениями статьи 437 ГК РФ. Отправляя сведения через
-        любую электронную форму на этом сайте, вы даете согласие на обработку ваших
+        любую электронную форму на этом сайте, вы даёте согласие на обработку ваших
         персональных данных.
-        <h3>Соглашение на обработку персональных данных.</h3>
+      </p>
+      <h4>Соглашение на обработку персональных данных</h4>
+      <p>
         Настоящим в соответствии с Федеральным законом № 152-ФЗ «О персональных
         данных» от 27.07.2006 года Вы подтверждаете свое согласие на обработку
         сайтом zhilischnoe-pravo.ru персональных данных: сбор, систематизацию,
         накопление, хранение, уточнение (обновление, изменение), использование,
         передачу исключительно в целях продажи программного обеспечения на Ваше имя,
-        как это описано ниже, блокирование, обезличивание, уничтожение. Сайт
-        zhilischnoe-pravo.ru гарантирует конфиденциальность получаемой информации.
+        как это описано ниже, блокирование, обезличивание, уничтожение.
+      </p>
+      <p>
+        Сайт zhilischnoe-pravo.ru гарантирует конфиденциальность получаемой информации.
         Обработка персональных данных осуществляется в целях эффективного исполнения
         заказов, договоров и иных обязательств, принятых сайтом zhilischnoe-pravo.ru
-        в качестве обязательных к исполнению. В случае необходимости предоставления
-        Ваших персональных данных правообладателю, дистрибьютору или реселлеру
-        программного обеспечения в целях регистрации программного обеспечения на
-        ваше имя, вы даёте согласие на передачу ваших персональных данных. Сайт
-        zhilischnoe-pravo.ru гарантирует, что правообладатель, дистрибьютор или
-        реселлер программного обеспечения осуществляет защиту персональных данных на
-        условиях, аналогичных изложенным в Политике конфиденциальности персональных
-        данных. Настоящее согласие распространяется на следующие Ваши персональные
-        данные: фамилия, имя и отчество, адрес электронной почты, почтовый адрес
-        доставки заказов, контактный телефон, платёжные реквизиты. Срок действия
-        согласия является неограниченным. Вы можете в любой момент отозвать
-        настоящее согласие, направив письменное уведомление на адрес:
-        admin@zhilischnoe-pravo.ru с пометкой «Отзыв согласия на обработку
-        персональных данных». Обращаем ваше внимание, что отзыв согласия на
-        обработку персональных данных влечёт за собой удаление Вашей учётной записи
-        с Интернет-сайта zhilischnoe-pravo.ru, а также уничтожение записей,
-        содержащих ваши персональные данные, в системах обработки персональных
-        данных на сайте zhilischnoe-pravo.ru, что может сделать невозможным
-        пользование интернет-сервисами zhilischnoe-pravo.ru. Гарантирую, что
-        представленная мной информация является полной, точной и достоверной, а
-        также что при представлении информации не нарушаются действующее
-        законодательство Российской Федерации, законные права и интересы третьих
-        лиц. Вся представленная информация заполнена мною в отношении себя лично.
+        в качестве обязательных к исполнению.
+      </p>
+      <p>
         Настоящее согласие действует в течение всего периода хранения персональных
         данных, если иное не предусмотрено законодательством Российской Федерации.
-      </div>
+        Вы можете в любой момент отозвать согласие, направив уведомление на адрес:
+        admin@zhilischnoe-pravo.ru с пометкой «Отзыв согласия на обработку
+        персональных данных».
+      </p>
     </div>
     <div class="modal-footer">
-      <button class="modal-ok" id="privacy-modal-ok">OK</button>
+      <button class="modal-ok" id="privacy-modal-ok">Принять</button>
     </div>
   </div>
 </div>
@@ -85,10 +84,12 @@
 
   function openModal() {
     modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   }
 
   function closeModal() {
     modal.style.display = 'none';
+    document.body.style.overflow = '';
   }
 
   openBtn.addEventListener('click', openModal);
@@ -100,109 +101,175 @@
       closeModal();
     }
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
 </script>
 
 <style>
-  footer {
-    background-color: #022d21;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
+  .footer {
+    background: var(--color-primary-dark);
+    color: rgba(255,255,255,0.75);
+    margin-top: 48px;
   }
 
-  footer a {
-    color: #ffffff;
-    text-decoration: none;
+  .footer__top-border {
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary-light) 50%, transparent 100%);
   }
 
-  footer a:hover {
-    text-decoration: underline;
+  .footer__inner {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
   }
 
-  @media (max-width: 768px) {
-    footer {
-      padding: 10px 0;
-    }
+  .footer__brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
   }
 
-  .footer-contact-form-container {
-    font-family: Arial, sans-serif;
+  .footer__initials {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary-light) 0%, var(--color-accent) 100%);
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 100px;
-    font-size: 1.3em;
-    margin: 5px;
-    color: #ffffff;
+    flex-shrink: 0;
   }
 
-  .footer-phone-link {
-    color: #ffffff;
+  .footer__brand-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
-  .privacy-policy {
-    color: #ffffff;
-    font-size: 0.8em;
-    cursor: pointer;
+  .footer__name {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-white);
+  }
+
+  .footer__specialty {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .footer__contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .footer__phone {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-white);
+    font-size: 1.05rem;
+    font-weight: 600;
     text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .footer__phone:hover {
+    color: var(--color-accent-light);
+  }
+
+  .footer__phone-icon {
+    font-size: 1rem;
+  }
+
+  .footer__address {
+    font-style: normal;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+  }
+
+  .footer__legal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+  }
+
+  .footer__privacy-btn {
     background: transparent;
     border: none;
-    font-family: Arial, sans-serif;
-  }
-
-  .privacy-policy:hover {
+    color: rgba(255,255,255,0.45);
+    font-size: 0.78rem;
+    font-family: var(--font-body);
+    cursor: pointer;
     text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--transition);
+    padding: 0;
   }
 
-  @media (max-width: 800px) {
-    .footer-contact-form-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+  .footer__privacy-btn:hover {
+    color: var(--color-accent-light);
   }
 
-  /* Modal styles */
+  .footer__copy {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* Modal */
   .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 2000;
+    padding: 20px;
   }
 
   .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
-    width: 800px;
-    max-width: 100%;
-    position: relative;
-    color: #000;
+    background: var(--color-white);
+    border-radius: var(--radius-md);
+    width: 100%;
+    max-width: 720px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
   }
 
   .modal-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
   }
 
   .modal-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--color-primary);
     margin: 0;
   }
 
@@ -210,39 +277,76 @@
     background: transparent;
     border: none;
     font-size: 1.5rem;
+    color: var(--color-text-muted);
     cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition), color var(--transition);
+  }
+
+  .modal-close:hover {
+    background: rgba(0,0,0,0.06);
+    color: var(--color-text);
   }
 
   .modal-body {
-    padding: 10px 0;
-    max-height: 60vh;
+    padding: 20px 24px;
     overflow-y: auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .modal-body p {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.65;
+  }
+
+  .modal-body h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-size: 1rem;
+    margin-top: 4px;
   }
 
   .modal-footer {
+    padding: 16px 24px;
+    border-top: 1px solid rgba(0,0,0,0.08);
     display: flex;
     justify-content: flex-end;
   }
 
   .modal-ok {
-    background-color: #23574d;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-white);
     border: none;
-    padding: 10px 20px;
+    padding: 10px 28px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: var(--font-body);
     cursor: pointer;
-    border-radius: 5px;
+    transition: background var(--transition);
   }
 
   .modal-ok:hover {
-    background-color: #1a4039;
+    background: var(--color-primary-light);
   }
 
-  @media (max-width: 700px) {
-    .modal-content {
-      padding: 5px;
-      border-radius: 5px;
-      width: 300px;
-      font-size: 0.7em;
+  @media (max-width: 768px) {
+    .footer__inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 24px 20px;
+      gap: 20px;
+    }
+
+    .footer__legal {
+      align-items: center;
     }
   }
 </style>

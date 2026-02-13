@@ -1,22 +1,74 @@
 ---
 ---
 
-<!-- Попап форма (скрыта по умолчанию) -->
-<div class="modal-overlay" id="popup-form" style="display:none;">
-  <div class="modal-container" id="popup-form-inner">
+<div class="popup-overlay" id="popup-form" style="display:none;" role="dialog" aria-modal="true" aria-label="Форма обратной связи">
+  <div class="popup-container" id="popup-form-inner">
+    <div class="popup-header">
+      <div>
+        <h2 class="popup-title">Получить консультацию</h2>
+        <p class="popup-subtitle">Заполните форму и мы свяжемся с вами в течение часа</p>
+      </div>
+      <button class="popup-close" id="popup-close-btn" aria-label="Закрыть">&times;</button>
+    </div>
+
     <form
       action="https://api.web3forms.com/submit"
       method="POST"
-      class="contact-form"
+      class="popup-form"
       id="contact-form"
     >
       <input type="hidden" name="access_key" value="84c692e9-7353-4178-adc1-0083648d392d" />
-      <input type="text" name="name" placeholder="Имя" class="input-field" required />
-      <input type="email" name="email" placeholder="Email" class="input-field" />
-      <input type="text" name="Phone Number" placeholder="Номер телефона" class="input-field" required />
-      <textarea name="message" placeholder="Сообщение" class="input-field" required></textarea>
-      <button type="submit" class="submit-button">Отправить</button>
-      <button type="button" class="close-button" id="popup-close-btn">Закрыть</button>
+
+      <div class="popup-field">
+        <label class="popup-label" for="popup-name">Ваше имя *</label>
+        <input
+          id="popup-name"
+          type="text"
+          name="name"
+          placeholder="Иван Иванов"
+          class="popup-input"
+          required
+        />
+      </div>
+
+      <div class="popup-field">
+        <label class="popup-label" for="popup-phone">Номер телефона *</label>
+        <input
+          id="popup-phone"
+          type="text"
+          name="Phone Number"
+          placeholder="+7 (___) ___-__-__"
+          class="popup-input"
+          required
+        />
+      </div>
+
+      <div class="popup-field">
+        <label class="popup-label" for="popup-email">Email</label>
+        <input
+          id="popup-email"
+          type="email"
+          name="email"
+          placeholder="email@example.ru"
+          class="popup-input"
+        />
+      </div>
+
+      <div class="popup-field">
+        <label class="popup-label" for="popup-message">Опишите ситуацию *</label>
+        <textarea
+          id="popup-message"
+          name="message"
+          placeholder="Кратко опишите вашу проблему..."
+          class="popup-input popup-textarea"
+          required
+        ></textarea>
+      </div>
+
+      <div class="popup-actions">
+        <button type="submit" class="popup-submit">Отправить заявку →</button>
+        <button type="button" class="popup-cancel" id="popup-close-btn2">Отмена</button>
+      </div>
     </form>
   </div>
 </div>
@@ -25,16 +77,20 @@
   const overlay = document.getElementById('popup-form') as HTMLElement;
   const inner = document.getElementById('popup-form-inner') as HTMLElement;
   const closeBtn = document.getElementById('popup-close-btn') as HTMLElement;
+  const closeBtn2 = document.getElementById('popup-close-btn2') as HTMLElement;
 
   function openPopup() {
     overlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
   }
 
   function closePopup() {
     overlay.style.display = 'none';
+    document.body.style.overflow = '';
   }
 
   closeBtn.addEventListener('click', closePopup);
+  closeBtn2.addEventListener('click', closePopup);
 
   overlay.addEventListener('mousedown', (e) => {
     if (!inner.contains(e.target as Node)) {
@@ -42,65 +98,188 @@
     }
   });
 
-  // Экспортируем функцию открытия попапа глобально
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closePopup();
+  });
+
   (window as any).openPopupForm = openPopup;
 </script>
 
 <style>
-  .modal-overlay {
+  .popup-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(6px);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    padding: 20px;
   }
 
-  .modal-container {
-    background-color: #fff;
-    padding: 30px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-  }
-
-  .input-field {
-    display: block;
+  .popup-container {
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
     width: 100%;
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    max-width: 520px;
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
   }
 
-  .submit-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #112b26;
+  .popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 28px 28px 20px;
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+  }
+
+  .popup-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--color-white);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+
+  .popup-subtitle {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.45;
+  }
+
+  .popup-close {
+    background: rgba(255,255,255,0.12);
     border: none;
-    border-radius: 5px;
+    color: var(--color-white);
+    font-size: 1.4rem;
+    line-height: 1;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    margin-bottom: 10px;
+    transition: background var(--transition);
+    flex-shrink: 0;
+    margin-left: 12px;
+    margin-top: -2px;
   }
 
-  .close-button {
-    display: block;
+  .popup-close:hover {
+    background: rgba(255,255,255,0.22);
+  }
+
+  .popup-form {
+    padding: 24px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .popup-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .popup-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .popup-input {
     width: 100%;
-    padding: 8px;
-    font-size: 14px;
+    padding: 11px 14px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    border: 1.5px solid rgba(15, 84, 66, 0.15);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-text);
+    transition: border-color var(--transition), box-shadow var(--transition);
+    outline: none;
+  }
+
+  .popup-input:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(78, 203, 163, 0.18);
+    background: var(--color-white);
+  }
+
+  .popup-input::placeholder {
+    color: rgba(90, 107, 102, 0.5);
+  }
+
+  .popup-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .popup-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 4px;
+  }
+
+  .popup-submit {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    color: var(--color-white);
+    border: none;
+    padding: 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-body);
     cursor: pointer;
-    background-color: transparent;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    color: #333;
+    transition: opacity var(--transition), transform var(--transition);
+    letter-spacing: 0.04em;
+  }
+
+  .popup-submit:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .popup-submit:active {
+    transform: translateY(0);
+  }
+
+  .popup-cancel {
+    background: transparent;
+    border: 1.5px solid rgba(15, 84, 66, 0.15);
+    color: var(--color-text-muted);
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.88rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    transition: border-color var(--transition), color var(--transition);
+  }
+
+  .popup-cancel:hover {
+    border-color: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  @media (max-width: 500px) {
+    .popup-container {
+      border-radius: var(--radius-md);
+    }
+
+    .popup-header {
+      padding: 20px 20px 16px;
+    }
+
+    .popup-form {
+      padding: 18px 20px 22px;
+      gap: 14px;
+    }
   }
 </style>

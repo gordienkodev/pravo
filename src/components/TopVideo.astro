@@ -4,6 +4,10 @@ const videoSrc = videos[Math.floor(Math.random() * videos.length)];
 ---
 
 <div class="top__content">
+  <video class="top__content-video" loop muted autoplay playsinline>
+    <source src={`https://zhilischnoe-pravo.ru/video/${videoSrc}`} type="video/mp4" />
+  </video>
+  <div class="top__overlay"></div>
   <div class="top__content-item">
     <h1 class="top__title">Юрист Рыжков Сергей Анатольевич</h1>
     <div class="top__text">
@@ -11,9 +15,6 @@ const videoSrc = videos[Math.floor(Math.random() * videos.length)];
       Вас денег. Консультации по телефону я провожу бесплатно.
     </div>
   </div>
-  <video class="top__content-video" loop muted autoplay playsinline>
-    <source src={`https://zhilischnoe-pravo.ru/video/${videoSrc}`} type="video/mp4" />
-  </video>
 </div>
 
 <style>
@@ -21,35 +22,43 @@ const videoSrc = videos[Math.floor(Math.random() * videos.length)];
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
     border-radius: 40px;
     padding: 80px;
     margin-bottom: 100px;
     position: relative;
     overflow: hidden;
-    background-color: rgba(139, 236, 209, 0.1);
+    min-height: 400px;
+  }
+
+  .top__content-video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .top__overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
     background: linear-gradient(
       to right,
-      rgba(139, 236, 209, 1) 10%,
-      rgba(139, 236, 209, 0.1) 60%
+      rgba(139, 236, 209, 0.9) 10%,
+      rgba(139, 236, 209, 0.2) 60%
     );
   }
 
   .top__content-item {
     max-width: 430px;
     text-align: left;
-  }
-
-  .top__content-video {
-    z-index: -1;
-    left: 0;
-    top: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+    position: relative;
+    z-index: 2;
   }
 
   .top__title {
@@ -66,6 +75,13 @@ const videoSrc = videos[Math.floor(Math.random() * videos.length)];
   @media (max-width: 500px) {
     .top__text {
       display: none;
+    }
+
+    .top__content {
+      padding: 40px 24px;
+      margin-bottom: 32px;
+      border-radius: 20px;
+      min-height: 280px;
     }
   }
 </style>

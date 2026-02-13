@@ -3,80 +3,115 @@ import ConsultationButton from './ConsultationButton.astro';
 import ContactForm from './ContactForm.astro';
 ---
 
-<header>
+<header class="header">
   <nav class="navbar">
-    <div class="name-container">
-      <div>Рыжков</div>
-      <div>Сергей</div>
-      <div>Анатольевич</div>
+    <div class="brand">
+      <div class="brand-name">
+        <span>Рыжков</span>
+        <span>Сергей Анатольевич</span>
+        <span class="brand-subtitle">Юрист по жилищному праву</span>
+      </div>
     </div>
-    <ConsultationButton nameButton="Бесплатная консультация" />
-    <ContactForm />
+    <div class="header-actions">
+      <ConsultationButton nameButton="Бесплатная консультация" />
+      <ContactForm />
+    </div>
   </nav>
+  <div class="header-divider"></div>
 </header>
 
 <style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(247, 253, 251, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 1px 0 rgba(15, 84, 66, 0.08);
+  }
+
   .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 1440px;
     margin: 0 auto;
-    padding: 15px;
+    padding: 14px 32px;
+    gap: 24px;
   }
 
-  .navbar a {
-    margin: 0 10px;
+  .brand {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
   }
 
-  .name-container {
-    color: #000000;
-    font-size: 1.5em;
-    text-transform: uppercase;
-    font-weight: bold;
+  .brand-name {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #000000;
   }
 
-  .name-container div {
-    margin-bottom: 5px;
+  .brand-name span {
+    margin-bottom: 0;
+  }
+
+  .brand-subtitle {
+    font-size: 0.55em;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .header-divider {
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-primary) 60%, transparent 100%);
+    max-width: 1440px;
+    margin: 0 auto;
+    opacity: 0.35;
   }
 
   @media (max-width: 1000px) {
     .navbar {
-      display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px;
+      padding: 16px 20px;
+      gap: 16px;
     }
 
-    .navbar a {
-      margin: 10px 0;
-    }
-
-    .name-container {
-      display: flex;
-      flex-direction: row;
-      gap: 10px;
+    .header-actions {
+      flex-direction: column;
+      gap: 12px;
+      width: 100%;
+      align-items: center;
     }
   }
 
   @media (max-width: 500px) {
     .navbar {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
+      padding: 12px 16px;
+      gap: 12px;
     }
 
-    .navbar a {
-      margin: 5px 0;
+    .brand-name span:first-child {
+      font-size: 1rem;
     }
 
-    .name-container {
-      display: flex;
-      flex-direction: row;
-      gap: 5px;
-      font-size: 1em;
+    .brand-name span:nth-child(2) {
+      font-size: 0.85rem;
     }
   }
 </style>

@@ -1,77 +1,179 @@
 ---
+const steps = [
+  {
+    num: '01',
+    title: 'Бесплатная консультация',
+    desc: 'Звоните или пишите — разберём вашу ситуацию и определим стратегию',
+    icon: '💬',
+  },
+  {
+    num: '02',
+    title: 'Заключение соглашения',
+    desc: 'Оформляем договор на оказание юридической помощи',
+    icon: '📝',
+  },
+  {
+    num: '03',
+    title: 'Немедленное исполнение',
+    desc: 'Приступаем к работе без промедления — ваши интересы под защитой',
+    icon: '🚀',
+  },
+];
 ---
 
-<div class="steps__content">
-  <div class="steps-header">Этапы работы</div>
-  <ul class="steps-item">
-    <li>Бесплатная консультация</li>
-    <li class="steps-arrow">»</li>
-    <li>Заключение соглашения на оказание юридической помощи</li>
-    <li class="steps-arrow">»</li>
-    <li>Немедленное юридическое исполнение поручения</li>
-  </ul>
-</div>
+<section class="steps">
+  <div class="steps__header">
+    <h2 class="steps__title">Этапы работы</h2>
+  </div>
+  <div class="steps__list">
+    {steps.map((step, i) => (
+      <>
+        <div class="steps__item">
+          <div class="steps__num">{step.num}</div>
+          <h3 class="steps__item-title">{step.title}</h3>
+          <p class="steps__item-desc">{step.desc}</p>
+        </div>
+        {i < steps.length - 1 && (
+          <div class="steps__arrow">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 16H26M26 16L18 8M26 16L18 24" stroke="#8becd1" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+        )}
+      </>
+    ))}
+  </div>
+</section>
 
-<style>
-  .steps__content {
+<style is:global>
+  .steps {
     background-color: #022d21;
-    padding: 30px 150px;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    border-radius: 24px;
+    padding: 48px 56px;
+    margin: 48px 0;
+    position: relative;
+    overflow: hidden;
+    max-width: 1440px;
+    box-sizing: border-box;
   }
 
-  .steps-header {
-    color: #ffffff;
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(139, 236, 209, 0.10) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .steps__header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .steps__title {
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 2.5em;
-    padding-bottom: 30px;
-    text-transform: uppercase;
     font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
+    text-transform: uppercase;
+    color: #ffffff;
   }
 
-  .steps-item {
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #cccccc;
-    font-size: 1.6em;
-    list-style-type: none;
-    padding-left: 0;
+  .steps__list {
     display: flex;
-    flex-direction: row;
-    gap: 80px;
-    flex-wrap: nowrap;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .steps__item {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 16px;
+    padding: 32px 28px;
+    text-align: left;
+    transition: background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .steps__item:hover {
+    background: rgba(139, 236, 209, 0.08);
+    border-color: rgba(139, 236, 209, 0.30);
+  }
+
+  .steps__arrow {
+    display: flex;
     align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    opacity: 0.8;
   }
 
-  .steps-arrow {
-    color: #cccccc;
-    font-size: 2.6em;
+  .steps__num {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: rgba(139, 236, 209, 0.20);
+    line-height: 1;
+    margin-bottom: 14px;
+    user-select: none;
   }
 
-  @media (max-width: 1300px) {
-    .steps-item {
-      font-size: 1.3em;
-      gap: 20px;
+  .steps__item-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  .steps__item-desc {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .steps {
+      padding: 36px 24px;
     }
-  }
 
-  @media (max-width: 870px) {
-    .steps-item {
-      font-size: 1.1em;
-      display: flex;
+    .steps__list {
       flex-direction: column;
+      gap: 0;
     }
 
-    .steps-header {
-      font-size: 1.5em;
-      padding-bottom: 30px;
+    .steps__arrow {
+      width: auto;
+      height: 40px;
+      transform: rotate(90deg);
     }
 
-    .steps__content {
-      padding: 20px 70px;
-      margin-bottom: 20px;
-      margin-top: 50px;
+    .steps__item {
+      padding: 22px 20px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .steps {
+      padding: 24px 14px;
+      border-radius: 12px;
+      margin: 24px 0;
+    }
+
+    .steps__title {
+      font-size: 1.6em;
+    }
+
+    .steps__num {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
   }
 </style>

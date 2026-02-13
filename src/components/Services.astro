@@ -1,43 +1,139 @@
 ---
+const services = [
+  'Жилищное право',
+  'Градостроительное право',
+  'Защита прав потребителей',
+  'Споры в строительной сфере',
+  'Претензионная работа',
+  'Представительство в суде',
+  'Составление процессуальных документов',
+  'Заключение специалистов',
+  'Технические расчёты при спорах в строительстве',
+];
 ---
 
-<div class="services__content">
-  <div class="services-header">Услуги</div>
-  <ul class="servises-item">
-    <li>Жилищное право</li>
-    <li>Градостроительное право</li>
-    <li>Защита прав потребителей</li>
-    <li>Споры в строительной сфере</li>
-    <li>Претензионная работа</li>
-    <li>Представительство в суде</li>
-    <li>Составление процессуальных документов</li>
-    <li>Заключение специалистов</li>
-    <li>Технические расчеты при спорах в строительстве</li>
+<section class="services">
+  <div class="services__header">
+    <h2 class="services__title">Услуги</h2>
+  </div>
+  <ul class="services__grid">
+    {services.map((title) => (
+      <li class="services__card">
+        <span class="services__card-line"></span>
+        <span class="services__card-title">{title}</span>
+      </li>
+    ))}
   </ul>
-</div>
+</section>
 
-<style>
-  .services__content {
+<style is:global>
+  .services {
     background-color: #e8fbf6;
-    padding: 30px 80px;
-    margin-bottom: 50px;
+    border-radius: 24px;
+    padding: 48px 56px;
+    margin-bottom: 48px;
+    max-width: 1440px;
+    box-sizing: border-box;
   }
 
-  .services-header {
-    color: #23574d;
-    font-size: 2.5em;
-    text-transform: uppercase;
-    font-weight: bold;
+  .services__header {
+    margin-bottom: 36px;
+    text-align: center;
+  }
+
+  .services__title {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #23574d;
   }
 
-  .servises-item {
-    font-size: 1.6em;
-    list-style-type: none;
-    padding-left: 0;
+  .services__grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .services__card {
+    background: #ffffff;
+    border: 1px solid rgba(35, 87, 77, 0.10);
+    border-left: 4px solid #8becd1;
+    border-radius: 8px;
+    padding: 20px 24px;
     display: flex;
-    gap: 50px;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-left-color 0.2s ease;
+    cursor: default;
+  }
+
+  .services__card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(35, 87, 77, 0.12);
+    border-left-color: #23574d;
+  }
+
+  .services__card-line {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: #8becd1;
+    border-radius: 2px;
+    margin-bottom: 4px;
+    transition: width 0.2s ease;
+  }
+
+  .services__card:hover .services__card-line {
+    width: 36px;
+  }
+
+  .services__card-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #022d21;
+    line-height: 1.4;
+  }
+
+  @media (max-width: 900px) {
+    .services__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services {
+      padding: 32px 24px;
+      border-radius: 16px;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .services {
+      padding: 24px 14px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+    }
+
+    .services__title {
+      font-size: 1.6em;
+    }
+
+    .services__grid {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .services__card {
+      padding: 14px 18px;
+    }
+
+    .services__card-title {
+      font-size: 0.9rem;
+    }
   }
 </style>
